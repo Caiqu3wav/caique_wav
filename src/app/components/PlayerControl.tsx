@@ -2,10 +2,11 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
 import { Play, Pause, SkipBack, SkipForward, RandomMusicsTrue, RandomMusicsFalse, VolumeOff, VolumeOn } from '@/app/icons'
-import "./styles.css"
+import "../styles/PlayerControl.css"
 import Modal from "./Modal"
 import React from "react"
 import usePlayerStore from "@/app/store/playerStore"
+import {shallow} from 'zustand/shallow'
 
 export interface PlayerProps {
     id: string;
@@ -30,23 +31,26 @@ const PlayerControl: React.FC<PlayerProps> = ({ id, setId }) => {
         setVolume,
         setProgress,
         setDuration,
-    } = usePlayerStore((state) => ({
-        currentTrack: state.currentTrack,
-        isPlaying: state.isPlaying,
-        isMuted: state.isMuted,
-        isRandom: state.isRandom,
-        volume: state.volume,
-        progress: state.progress,
-        duration: state.duration,
-        toggleMute: state.toggleMute,
-        togglePlay: state.togglePlay,
-        toggleRandom: state.toggleRandom,
-        playNextTrack: state.playNextTrack,
-        playPrevTrack: state.playPrevTrack,
-        setVolume: state.setVolume,
-        setProgress: state.setProgress,
-        setDuration: state.setDuration,
-    }));
+    } = usePlayerStore(
+        (state) => ({
+            currentTrack: state.currentTrack,
+            isPlaying: state.isPlaying,
+            isMuted: state.isMuted,
+            isRandom: state.isRandom,
+            volume: state.volume,
+            progress: state.progress,
+            duration: state.duration,
+            toggleMute: state.toggleMute,
+            togglePlay: state.togglePlay,
+            toggleRandom: state.toggleRandom,
+            playNextTrack: state.playNextTrack,
+            playPrevTrack: state.playPrevTrack,
+            setVolume: state.setVolume,
+            setProgress: state.setProgress,
+            setDuration: state.setDuration,
+        }),
+        shallow // Faz a comparação rasa
+    );
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 

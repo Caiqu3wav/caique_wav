@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client';
-import "../../styles/Modal.css"
+import "../styles/Modal.css"
 import Image from "next/image";
 import { Play, Pause, SkipBack, SkipForward, RandomMusicsTrue, RandomMusicsFalse, 
   VolumeOff, VolumeOn } from '@/app/icons';
