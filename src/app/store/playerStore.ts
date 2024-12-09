@@ -27,7 +27,7 @@ interface PlayerState {
   setDuration: (duration: number) => void;
 }
 
-const usePlayerStore = create<PlayerState>((set, get) => ({
+export const usePlayerStore = create<PlayerState>((set, get) => ({
     playlist: [],
     currentTrack: null,
     isPlaying: false,
@@ -95,4 +95,3 @@ const usePlayerStore = create<PlayerState>((set, get) => ({
   playlistRemoveAll: () => set((state) => ({playlist: []}))
 }));
 
-export default usePlayerStore;

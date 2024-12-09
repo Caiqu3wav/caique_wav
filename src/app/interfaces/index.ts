@@ -31,3 +31,21 @@ export interface Beat {
     beats: Beat[];
     playAlbum: () => void;
   }
+
+ export interface PlayerState {
+    currentTrack: Beat | null; 
+    isPlaying: boolean;
+    isMuted: boolean;
+    isRandom: boolean;
+    volume: number;
+    progress: number;
+    duration: number;
+    toggleMute: () => void;
+    togglePlay: () => void;
+    toggleRandom: () => void;
+    playNextTrack: () => void;
+    playPrevTrack: () => void;
+    setVolume: (volume: number) => void;
+    setProgress: (progress: number) => void;
+    setDuration: (duration: number) => void;
+}
